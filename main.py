@@ -1,12 +1,18 @@
 from random import randint
 
-user_choice = int(input("Choose number: "))
+print("Welcome to Python Casino!")
 
-pc_choice = randint(1, 50)
+pc_choice = randint(1, 100)
 
-if user_choice == pc_choice:
-    print(f"You win!")
-elif user_choice > pc_choice:
-    print(f"Lower than your choice! Computer chose {pc_choice}.")
-elif user_choice < pc_choice:
-    print(f"Higher than your choice! Computer Chose {pc_choice}.")
+playing = True
+
+while playing:
+    user_choice = int(input("Choose number (1-100): "))
+
+    if user_choice == pc_choice:
+        print(f"You win!")
+        playing = False
+    elif user_choice > pc_choice:
+        print(f"Lower than your choice!")
+    elif user_choice < pc_choice:
+        print(f"Higher than your choice!")
