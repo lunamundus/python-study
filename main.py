@@ -1,10 +1,13 @@
 websites = (
     "google.com",
     "airbnb.com",
-    "twitter.com",
+    "https://twitter.com",
     "facebook.com",
-    "tiktok.com"
+    "https://tiktok.com"
 )
 
 for website in websites:
-    print(f"This website is {website}")
+    if not website.startswith("https://"):      # if website.startswith("https://") == False:
+        website = f"https://{website}"
+    
+    print(website)
