@@ -1,37 +1,10 @@
-from requests import get
+class Puppy:
+    def __init__(self):         # 모든 메서드는 self를 첫번째 파라미터로 가짐
+        # class의 기본 값을 세팅
+        self.name = "ruffus"
+        self.age = 21
+        self.breed = "Beagle"
 
-websites = (
-    "google.com",
-    "airbnb.com",
-    "https://twitter.com",
-    "facebook.com",
-    "https://tiktok.com",
-    "https://httpstat.us/200",
-    "httpstat.us/302",
-    "https://httpstat.us/505",
-    "httpstat.us/404",
-    "httpstat.us/101"
-)
+ruffus = Puppy()                # 객체 초기화 (변수를 하나의 객체로서 선언)
 
-result = {}
-
-for website in websites:
-    if not website.startswith("https://"):      # if website.startswith("https://") == False:
-        website = f"https://{website}"
-    
-    response = get(website)
-
-    if response.status_code >= 500:
-        result[website] = "Server Error"
-    elif response.status_code >= 400:
-        result[website] = "Client Error"
-    elif response.status_code >= 300:
-        result[website] = "Redirection"
-    elif response.status_code >= 200:
-        result[website] = "Success!"
-    elif response.status_code >= 100:
-        result[website] = "Informational"
-    else:
-        result[website] = "What's wrong...?"
-
-print(result)
+print(ruffus.name, ruffus.age, ruffus.breed)
