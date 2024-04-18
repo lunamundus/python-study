@@ -1,10 +1,21 @@
 class Puppy:
-    def __init__(self):         # 모든 메서드는 self를 첫번째 파라미터로 가짐
-        # class의 기본 값을 세팅
-        self.name = "ruffus"
-        self.age = 21
-        self.breed = "Beagle"
+    def __init__(self, name, breed):
+        self.name = name
+        self.age = 0.2
+        self.breed = breed
 
-ruffus = Puppy()                # 객체 초기화 (변수를 하나의 객체로서 선언)
+    def __str__(self):
+        return f"name: {self.name}, breed: {self.breed}"
 
-print(ruffus.name, ruffus.age, ruffus.breed)
+
+ruffus = Puppy(
+    name="Ruffus", 
+    breed="Beagle"
+)
+
+bibi = Puppy(
+    name="Bibi",
+    breed="Dalmatian"
+)
+
+print(ruffus)
