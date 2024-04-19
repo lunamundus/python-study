@@ -4,20 +4,24 @@ class Dog:
         self.breed = breed
         self.age = age
 
-class GuardDog(Dog):                    # GuardDog class는 Dog class를 상속받음
-                                                            # -> name, breed, age를 그대로 가지게 됨
+    def sleep(self):
+        print("Zzz...")
+
+class GuardDog(Dog):
+    def __init__(self, name, breed):
+        super().__init__(name=name, breed=breed, age=5)         # super()는 부모 class를 참조 -> 부모 class인 Dog의 __init__() 메서드를 호출함
+        self.aggresive = True                                   # 부모 class에 없는 Property도 가질 수 있음
+    
     def rrrrr(self):
         print("Stay Away!!")
 
-class Puppy(Dog):                       # Puppy class는 Dog class를 상속받음
-                                                            # -> name, breed, age를 그대로 가지게 됨
-    def woof_woof(self):            # 사용하지 않더라도 메서드 내에서 self 파라미터는 꼭 받아와야 함
-        print("Woof Woof!")
+class Puppy(Dog):
+    def __init__(self, name, breed):
+        super().__init__(name=name, breed=breed, age=0.1)       # super()는 부모 class를 참조 -> 부모 class인 Dog의 __init__() 메서드를 호출함
+        self.spoiled = True                                     # 부모 class에 없는 Property도 가질 수 있음
 
-    def introduce(self):
-        self.woof_woof()            # 메서드 내에서 다른 메서드를 호출할 수 있음
-        print(f"My name is {self.name} and I am a baby {self.breed}.")
-        self.woof_woof()
+    def woof_woof(self):
+        print("Woof Woof!")
 
 
 ruffus = Puppy(
@@ -25,9 +29,10 @@ ruffus = Puppy(
     breed="Beagle"
 )
 
-bibi = Puppy(
+bibi = GuardDog(
     name="Bibi",
     breed="Dalmatian"
 )
 
-ruffus.introduce()
+ruffus.sleep()
+bibi.sleep()
