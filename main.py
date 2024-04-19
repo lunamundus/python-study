@@ -1,12 +1,23 @@
-class Puppy:
-    def __init__(self, name, breed): # 파라미터를 정의하여 객체 생성 시 데이터를 받아올 수 있음
+class Dog:
+    def __init__(self, name, breed, age):
         self.name = name
-        self.age = 0.2
         self.breed = breed
+        self.age = age
 
-    def __str__(self):
-        # self 객체를 이용하여 같은 class 내에서 데이터를 사용할 수 있음 -> 같은 메모리 주소를 참조하고 있기 때문
-        return f"name: {self.name}, breed: {self.breed}"
+class GuardDog(Dog):                    # GuardDog class는 Dog class를 상속받음
+                                                            # -> name, breed, age를 그대로 가지게 됨
+    def rrrrr(self):
+        print("Stay Away!!")
+
+class Puppy(Dog):                       # Puppy class는 Dog class를 상속받음
+                                                            # -> name, breed, age를 그대로 가지게 됨
+    def woof_woof(self):            # 사용하지 않더라도 메서드 내에서 self 파라미터는 꼭 받아와야 함
+        print("Woof Woof!")
+
+    def introduce(self):
+        self.woof_woof()            # 메서드 내에서 다른 메서드를 호출할 수 있음
+        print(f"My name is {self.name} and I am a baby {self.breed}.")
+        self.woof_woof()
 
 
 ruffus = Puppy(
@@ -19,4 +30,4 @@ bibi = Puppy(
     breed="Dalmatian"
 )
 
-print(ruffus)
+ruffus.introduce()
