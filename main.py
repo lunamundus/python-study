@@ -1,4 +1,5 @@
 import time
+import csv
 
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
@@ -66,5 +67,11 @@ for keyword in keywords:
 # playwright 종료
 playwright.stop()
 
-print(jobs_db)
 print(len(jobs_db))
+
+job_file = open("jobs.csv", mode='w', encoding="cp949")
+writter = csv.writer(job_file)
+writter.writerow(["Title", "Company", "Language", "Reward", "Link"])
+
+for job in jobs_db:
+    writter.writerow(job.values())
