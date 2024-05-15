@@ -1,9 +1,13 @@
-from flask import Flask
+from flask import Flask, render_template
 
-app = Flask("JobScrapper")
+app = Flask("JobScraper")
 
 @app.route("/") # decorator
 def home():
-    return "hey there!"
+    return render_template("home.html", name="nico")
+
+@app.route("/hello")
+def hello():
+    return "<h1>Hello!</h1>"
 
 app.run()
